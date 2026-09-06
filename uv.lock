@@ -126,6 +126,18 @@ wheels = [
 ]
 
 [[package]]
+name = "django-filter"
+version = "26.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/cb/3e/563965173d4cbb5fc308087e7b3d11a115b7b67273d093622480b1e31f78/django_filter-26.1.tar.gz", hash = "sha256:66ea04031b068c77c86e1ac26ced7a3f8f13ce797f5795751707e3deefc58054", size = 144299, upload-time = "2026-07-11T09:27:02.767Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1f/01/afffed1e3c4540fb75bf550a18b6176a9f6371b5f3e52b69a28995b6480c/django_filter-26.1-py3-none-any.whl", hash = "sha256:7d98ef2899218e6242619b532cb1b95af14e09dfcf74844aecb550ad27b59ff2", size = 94069, upload-time = "2026-07-11T09:27:01.012Z" },
+]
+
+[[package]]
 name = "django-health-check"
 version = "4.5.1"
 source = { registry = "https://pypi.org/simple" }
@@ -147,6 +159,7 @@ dependencies = [
     { name = "django-environ" },
     { name = "django-health-check" },
     { name = "gunicorn" },
+    { name = "neapolitan" },
     { name = "psycopg", extra = ["binary", "pool"] },
     { name = "whitenoise" },
 ]
@@ -170,6 +183,7 @@ requires-dist = [
     { name = "django-environ", specifier = ">=0.14.0" },
     { name = "django-health-check", specifier = ">=4.5.1" },
     { name = "gunicorn", specifier = ">=26.2.0" },
+    { name = "neapolitan", specifier = ">=26.1" },
     { name = "psycopg", extras = ["binary", "pool"], specifier = ">=3.3.5" },
     { name = "whitenoise", specifier = ">=6.8.0" },
 ]
@@ -233,6 +247,19 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/72/34/14ca021ce8e5dfedc35312d08ba8bf51fdd999c576889fc2c24cb97f4f10/iniconfig-2.3.0.tar.gz", hash = "sha256:c76315c77db068650d49c5b56314774a7804df16fee4402c1f19d6d15d8c4730", size = 20503, upload-time = "2025-10-18T21:55:43.219Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/b1/3846dd7f199d53cb17f49cba7e651e9ce294d8497c8c150530ed11865bb8/iniconfig-2.3.0-py3-none-any.whl", hash = "sha256:f631c04d2c48c52b84d0d0549c99ff3859c98df65b3101406327ecc7d53fbf12", size = 7484, upload-time = "2025-10-18T21:55:41.639Z" },
+]
+
+[[package]]
+name = "neapolitan"
+version = "26.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "django" },
+    { name = "django-filter" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/16/ad/b359f22cd2506d3d466a50813644547942bb4e4e23714004fcb5e5bce6b9/neapolitan-26.1.tar.gz", hash = "sha256:e45cd8f4787174777a4f8b822bea6bace457b41507cf1a8db8de0b53d7e331d0", size = 26628, upload-time = "2026-03-15T09:54:14.605Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0b/a5/b84542dc6771b2174d0d7993a7c2c14b8a3a6ae44856bb3e7dc7cdbc7ee7/neapolitan-26.1-py2.py3-none-any.whl", hash = "sha256:14ef19ace754125140599310be5053e0f3697dec2aabee0993adde780767a816", size = 14233, upload-time = "2026-03-15T09:54:12.722Z" },
 ]
 
 [[package]]

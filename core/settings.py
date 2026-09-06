@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Third Party
     'health_check',
     'debug_toolbar',
+    'neapolitan',
 
     # Local
     'core',

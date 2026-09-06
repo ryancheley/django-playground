@@ -6,10 +6,13 @@ from django.urls import include, path
 from debug_toolbar.toolbar import debug_toolbar_urls
 from health_check.views import HealthCheckView
 
+from .views import UserProfileView
+
 urlpatterns = [
     path("", views.flatpage, kwargs={"url": "/"}, name="home"),
     path('admin/', admin.site.urls),
     path('health/', HealthCheckView.as_view(), name='health_check'),
+    *UserProfileView.get_urls(),
 ]
 
 if DEBUG:
