@@ -151,11 +151,6 @@ dependencies = [
     { name = "whitenoise" },
 ]
 
-[package.optional-dependencies]
-dev = [
-    { name = "ruff" },
-]
-
 [package.dev-dependencies]
 dev = [
     { name = "django-debug-toolbar" },
@@ -165,6 +160,7 @@ dev = [
     { name = "pytest-django" },
     { name = "pytest-randomly" },
     { name = "pytest-xdist" },
+    { name = "ruff" },
     { name = "zizmor" },
 ]
 
@@ -175,10 +171,8 @@ requires-dist = [
     { name = "django-health-check", specifier = ">=4.5.1" },
     { name = "gunicorn", specifier = ">=26.2.0" },
     { name = "psycopg", extras = ["binary", "pool"], specifier = ">=3.3.5" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.16.6" },
     { name = "whitenoise", specifier = ">=6.8.0" },
 ]
-provides-extras = ["dev"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -189,6 +183,7 @@ dev = [
     { name = "pytest-django", specifier = ">=4.14.0" },
     { name = "pytest-randomly", specifier = ">=5.0.0" },
     { name = "pytest-xdist", specifier = ">=3.8.0" },
+    { name = "ruff", specifier = ">=0.16.6" },
     { name = "zizmor", specifier = ">=1.30.0" },
 ]
 
