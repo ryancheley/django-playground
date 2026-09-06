@@ -23,6 +23,9 @@ DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS: list[str] = env.list("ALLOWED_HOSTS")
 
+# Docker/gunicorn makes REMOTE_ADDR the bridge gateway, so the default
+# INTERNAL_IPS check hides the toolbar. Gate on DEBUG directly instead.
+DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": lambda request: DEBUG}
 
 # Application definition
 
@@ -35,12 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third Party
     'health_check',
+    'debug_toolbar',
 
     # Local
     'core',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
