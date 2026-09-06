@@ -11,3 +11,9 @@ wheels/
 
 # SQLite Database
 *.sqlite3
+
+# Environment files
+.env
+
+# Static files
+/static
