@@ -34,7 +34,7 @@ RUN mkdir -p /tmp/api /tmp/blsdata /tmp/candidates /tmp/companies /tmp/core /tmp
 ARG INSTALL_DEV=false
 WORKDIR /tmp
 RUN if [ "$INSTALL_DEV" = "true" ]; then \
-        uv pip install --no-cache-dir -r pyproject.toml --extra dev; \
+        uv pip install --no-cache-dir -r pyproject.toml --group dev; \
     else \
         uv pip install --no-cache-dir -r pyproject.toml; \
     fi

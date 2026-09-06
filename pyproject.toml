@@ -19,10 +19,6 @@ dependencies = [
     "psycopg[binary,pool]>=3.3.5",
     "whitenoise>=6.8.0",
 ]
-[project.optional-dependencies]
-dev = [
-    "ruff>=0.16.6",
-]
 
 [dependency-groups]
 dev = [
@@ -33,5 +29,6 @@ dev = [
     "pytest-django>=4.14.0",
     "pytest-randomly>=5.0.0",
     "pytest-xdist>=3.8.0",
+    "ruff>=0.16.6",
     "zizmor>=1.30.0",
 ]
