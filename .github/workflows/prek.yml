@@ -1,0 +1,28 @@
+name: Code Quality (prek)
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - dev
+
+# Run once per branch ref and cancel superseded runs. Triggering on push only
+# (matching django.yml) avoids the duplicate run that push + pull_request caused
+# for branches with an open PR (GH #1939).
+concurrency:
+  group: prek-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prek:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: Run prek
+        uses: j178/prek-action@v2
