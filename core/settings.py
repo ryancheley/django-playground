@@ -1,3 +1,4 @@
+import importlib.util
 from pathlib import Path
 
 import environ
@@ -59,7 +60,12 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-if DEBUG:
+# Enable debug toolbar only when DEBUG is on AND the package is actually
+# installed. The production image is built without dev deps (INSTALL_DEV=false),
+# so this stays off in prod even if DEBUG is misconfigured (GH #1869).
+DEBUG_TOOLBAR = DEBUG and importlib.util.find_spec("debug_toolbar") is not None
+
+if DEBUG_TOOLBAR:
     INSTALLED_APPS += [
         "debug_toolbar",
     ]
