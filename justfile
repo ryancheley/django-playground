@@ -73,21 +73,21 @@
 # Create a Django superuser
 [group('django')]
 @createsuperuser USERNAME EMAIL:
-    docker compose run --rm django uv run manage.py createsuperuser \
+    docker compose run --rm web uv run manage.py createsuperuser \
         --username={{ USERNAME }} \
         --email={{ EMAIL }}
 
 # Collect static files
 [group('django')]
 @collectstatic *ARGS="--no-input":
-    docker compose run --rm django uv run manage.py collectstatic {{ ARGS }}
+    docker compose run --rm web uv run manage.py collectstatic {{ ARGS }}
 
 # Run Django shell
 [group('django')]
 @shell *ARGS:
-    docker compose run --rm django uv run manage.py shell {{ ARGS }}
+    docker compose run --rm web uv run manage.py shell {{ ARGS }}
 
 # Run a Django management command
 [group('django')]
 @run ARGS:
-    docker compose run --rm django uv run manage.py {{ ARGS }}
+    docker compose run --rm web uv run manage.py {{ ARGS }}
