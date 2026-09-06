@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.flatpages",
     # Third Party
+    "django_ckeditor_5",
     "health_check",
     "neapolitan",
     # Local
     "core",
+    "blog",
 ]
 
 SITE_ID = 1
@@ -150,14 +152,36 @@ MAILERS = {
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    },
+    "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-CSRF_TRUSTED_ORIGINS = [
-    f"https://{host}"
-    for host in ALLOWED_HOSTS
-    if host not in ("127.0.0.1", "localhost")
-]
+CSRF_TRUSTED_ORIGINS = [f"https://{host}" for host in ALLOWED_HOSTS if host not in ("127.0.0.1", "localhost")]
+
+# CKEditor 5 configuration
+CKEDITOR_5_CONFIGS = {
+    "default": {
+        "toolbar": [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "blockQuote",
+            "imageUpload",
+            "|",
+            "sourceEditing",
+        ],
+        "image": {
+            "toolbar": [
+                "imageTextAlternative",
+                "imageStyle:full",
+                "imageStyle:side",
+                "imageResize",
+            ],
+        },
+        "height": "400px",
+    },
+}
