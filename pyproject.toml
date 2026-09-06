@@ -1,3 +1,10 @@
+[build-system]
+requires = ["setuptools>=83.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = []
+
 [project]
 name = "django-playground"
 version = "0.1.0"
@@ -6,4 +13,10 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "django>=6.1.1",
+    "django-health-check>=4.5.1",
+    "gunicorn>=26.2.0",
+]
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.16.6",
 ]

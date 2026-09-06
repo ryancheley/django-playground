@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: dj-playground-db
+    environment:
+      POSTGRES_DB: dj-playground
+      POSTGRES_USER: dj-playground
+      POSTGRES_PASSWORD: dj-playground_dev_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dj-playground"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dj-playground-network
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Local development needs the dev/debug tooling (DEBUG=on); the production
+        # image is built without this arg and therefore excludes dev dependencies.
+        INSTALL_DEV: "true"
+    container_name: dj-playground-web
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn core.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 300 --reload"
+    volumes:
+      # Mount source code for hot reload in development
+      - .:/app
+      # Exclude virtual env to avoid conflicts
+      - /app/.venv
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://dj-playground:dj-playground_dev_password@db:5432/dj-playground
+      - DEBUG=on
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - dj-playground-network
+
+volumes:
+  postgres_data:
+
+networks:
+  dj-playground-network:
+    driver: bridge
