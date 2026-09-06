@@ -1,0 +1,45 @@
+version: 2
+updates:
+  # Update Python dependencies weekly
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      day: "friday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    groups:
+      python-packages:
+        patterns:
+          - "*"
+    reviewers:
+      - "ryancheley"
+    assignees:
+      - "ryancheley"
+    commit-message:
+      prefix: ":arrow_up: deps"
+      include: "scope"
+    labels:
+    - "🛠️ maintenance"
+
+  # Update GitHub Actions weekly
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    reviewers:
+      - "ryancheley"
+    assignees:
+      - "ryancheley"
+    commit-message:
+      prefix: ":construction_worker: ci"
+      include: "scope"
+    labels:
+    - "🛠️ maintenance"
