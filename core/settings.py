@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.flatpages",
     # Third Party
     "django_ckeditor_5",
+    "django_tailwind_cli",
     "health_check",
     "neapolitan",
     # Local

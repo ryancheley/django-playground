@@ -1,17 +1,19 @@
 {% load static %}
 <!DOCTYPE html>
+{% load tailwind_cli %}
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static "css/styles.css" %}" rel="stylesheet">
+    <link href="{% static "css/tailwind.css" %}" rel="stylesheet">
     <title>
       {% block title %}
         {{ pages.slug }}
       {% endblock title %}
+      {% tailwind_css %}
     </title>
   </head>
-  <body>
+  <body class="bg-gray-50">
     {% include "_navigation.html" %}
     <div>
       {% if messages %}
@@ -21,12 +23,12 @@
           {% endfor %}
         </div>
       {% endif %}
-      <main id="main">
+      <main id="main" class="container mx-auto px-4">
         {% block content %}
         {% endblock content %}
       </main>
       <footer>
-        
+
       </footer>
     </div>
     <script src="https://unpkg.com/htmx.org@1.1.0"></script>

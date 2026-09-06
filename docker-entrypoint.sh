@@ -4,6 +4,9 @@ set -e
 echo "Running database migrations..."
 python manage.py migrate --noinput
 
+echo "Build Tailwind css file..."
+python manage.py tailwind build
+
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
