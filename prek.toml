@@ -32,5 +32,5 @@ hooks = [
 repo = "https://github.com/adamchainz/django-upgrade"
 rev = "1.32.0"
 hooks = [
-{ id = "django-upgrade", args = ["-target-version, '6.1'"] },
+    { id = "django-upgrade", args = ["--target-version", "6.1"] },
 ]
