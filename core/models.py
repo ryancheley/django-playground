@@ -8,12 +8,15 @@ class Base(models.Model):
     modified_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="modified")
     modify_timestamp = models.DateTimeField(auto_now=True)
 
+    objects = models.Manager()
+
     class Meta:
         abstract = True
 
 class UserProfile(Base):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=True)
+
 
     def __str__(self):
         return str(self.user)

@@ -9,3 +9,10 @@ hooks = [
     { id = "end-of-file-fixer" },
     { id = "check-added-large-files" },
 ]
+
+[[repos]]
+repo = "https://github.com/astral-sh/ty-pre-commit"
+rev = "v0.0.50"
+hooks = [
+    { id = "ty", args = ["--isolated"] },
+]
