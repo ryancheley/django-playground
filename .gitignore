@@ -17,3 +17,6 @@ wheels/
 
 # Static files
 /staticfiles
+
+# Coverage
+.coverage
