@@ -16,4 +16,4 @@ wheels/
 .env
 
 # Static files
-/static
+/staticfiles
