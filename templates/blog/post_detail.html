@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ object.title }}</h1>
+
+<dl>
+  <dt>Body</dt>
+  <dd>{{ object.body | safe }}</dd>
+
+  <dt>Published</dt>
+  <dd>{{ object.published_date }}</dd>
+
+  <dt>Categories</dt>
+  <dd>{{ object.categories.all|join:", "|default:"—" }}</dd>
+</dl>
+{% endblock %}

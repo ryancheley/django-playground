@@ -23,3 +23,9 @@ class UserProfileView(LoginRequiredMixin, CRUDView):
         self.object.save()
 
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = getattr(self, "object", None)
+        context["title"] = user if user else "User Profile"
+        return context

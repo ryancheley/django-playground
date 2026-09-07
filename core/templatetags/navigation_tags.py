@@ -7,4 +7,4 @@ register = template.Library()
 
 @register.inclusion_tag("_navigation.html", takes_context=True)
 def navigation(context):
-    return {"navigation_items": Navigation.objects.all(), "request": context.get("request")}
+    return {"navigation_items": Navigation.active_objects.all(), "request": context.get("request")}

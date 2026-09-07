@@ -11,12 +11,14 @@ class PostView(LoginRequiredMixin, CRUDView):
     form_class = PostForm
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
         user = self.request.user
-        self.object.author = user
-        self.object.created_by = user
-        self.object.modified_by = user
-
-        self.object.save()
-
+        form.instance.author = user
+        form.instance.created_by = user
+        form.instance.modified_by = user
         return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = getattr(self, "object", None)
+        context["title"] = post.title if post else "Posts"
+        return context
