@@ -1,0 +1,14 @@
+<ul>
+    {% for item in navigation_items %}
+      <li{% if request.path == item.uri_path %} class="active"{% endif %}>
+        <a href="{{ item.uri_path }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+    <li>
+        {% if request.user %}
+            <p>logged in </p>
+        {% else %}
+            <p>not logged in </p>
+        {% endif %}
+    </li>
+</ul>

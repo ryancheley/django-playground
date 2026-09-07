@@ -30,3 +30,11 @@ class UserProfile(Base):
 
     def __str__(self):
         return str(self.user)
+
+
+class Navigation(Base):
+    title = models.CharField(max_length=100, unique=True)
+    uri_path = models.CharField(max_length=255)
+
+    def __str__(self):
+        return str(self.title)
