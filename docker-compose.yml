@@ -19,6 +19,8 @@ services:
       - dj-playground-network
 
   web:
+    expose:
+      - "8000"
     build:
       context: .
       dockerfile: Dockerfile
@@ -36,8 +38,6 @@ services:
       - .:/app
       # Exclude virtual env to avoid conflicts
       - /app/.venv
-    ports:
-      - "8000:8000"
     env_file:
       - .env
     environment:
