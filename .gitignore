@@ -20,3 +20,6 @@ wheels/
 
 # Coverage
 .coverage
+
+# Local dev compose override
+docker-compose.override.yml
