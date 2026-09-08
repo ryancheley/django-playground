@@ -55,6 +55,30 @@ services:
     networks:
       - dj-playground-network
 
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # Local development needs the dev/debug tooling (DEBUG=on); the production
+        # image is built without this arg and therefore excludes dev dependencies.
+        INSTALL_DEV: "true"
+    container_name: dj-playground-worker
+    command: >
+      sh -c "python manage.py db_worker"
+    volumes:
+      # Mount source code for hot reload in development
+      - .:/app
+      # Exclude virtual env to avoid conflicts
+      - /app/.venv
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - dj-playground-network
+
 volumes:
   postgres_data:
 

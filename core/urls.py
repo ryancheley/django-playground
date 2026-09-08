@@ -13,6 +13,7 @@ urlpatterns = [
     path("health/", HealthCheckView.as_view(), name="health_check"),
     path("ckeditor5/", include("django_ckeditor_5.urls")),
     path("blog/", include("blog.urls")),
+    path("hockey/", include("hockey.urls")),
     *UserProfileView.get_urls(),
 ]
 

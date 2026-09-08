@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="post" action="{% url 'get-data' %}">
+  {% csrf_token %}
+  <button type="submit">Run sync</button>
+</form>
+{% endblock %}

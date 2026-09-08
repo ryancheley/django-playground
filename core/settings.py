@@ -42,11 +42,13 @@ INSTALLED_APPS = [
     "django.contrib.flatpages",
     # Third Party
     "django_ckeditor_5",
+    "django_tasks_db",
     "health_check",
     "neapolitan",
     # Local
-    "core",
     "blog",
+    "core",
+    "hockey",
 ]
 
 SITE_ID = 1
@@ -188,3 +190,6 @@ CKEDITOR_5_CONFIGS = {
         "height": "400px",
     },
 }
+
+
+TASKS = {"default": {"BACKEND": "django_tasks_db.DatabaseBackend", "QUEUES": ["default"]}}
