@@ -196,6 +196,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "django-debug-toolbar" },
+    { name = "django-probe" },
     { name = "django-upgrade" },
     { name = "prek" },
     { name = "pytest-cov" },
@@ -224,6 +225,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "django-debug-toolbar", specifier = ">=8.0.0" },
+    { name = "django-probe", specifier = ">=0.3.2" },
     { name = "django-upgrade", specifier = ">=1.32.0" },
     { name = "prek", specifier = ">=0.5.2" },
     { name = "pytest-cov", specifier = ">=7.1.0" },
@@ -233,6 +235,15 @@ dev = [
     { name = "ruff", specifier = ">=0.16.6" },
     { name = "ty", specifier = ">=0.0.78" },
     { name = "zizmor", specifier = ">=1.30.0" },
+]
+
+[[package]]
+name = "django-probe"
+version = "0.3.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/73/e6/8aed4251bf62a2712228fac69e1253e6850e5dbdfac2a6a85e1ebf03ea2c/django_probe-0.3.2.tar.gz", hash = "sha256:8e4910694eb78485e7f28b3cce823e7d2e45e4cacf5065da99b64777004e62c4", size = 21675, upload-time = "2026-09-12T13:43:52.624Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7f/4e/99faf35b764e5c202c6fad8a28a0d5b53ba6df98652cff3b7c009c0206ef/django_probe-0.3.2-py3-none-any.whl", hash = "sha256:2faa2dc18d3bf1a89f5ba943a09908d0c5808bfa09e2160283f3ad983809abd2", size = 30085, upload-time = "2026-09-12T13:43:51.504Z" },
 ]
 
 [[package]]
