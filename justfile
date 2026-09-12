@@ -66,6 +66,13 @@
 @console:
     docker compose run --rm web /bin/bash
 
+# Take container down and then bring back up with rebuild
+[group('docker')]
+@rebuild:
+    just down && just up --build -d
+
+
+
 # --------------------------------------------------
 # Django Management
 # --------------------------------------------------
@@ -91,3 +98,8 @@
 [group('django')]
 @run ARGS:
     docker compose run --rm web uv run manage.py {{ ARGS }}
+
+
+[group('tailwind')]
+@css:
+    npx tailwindcss build styles.css -o static/css/tailwind.css

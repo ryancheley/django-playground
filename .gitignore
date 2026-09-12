@@ -23,3 +23,9 @@ wheels/
 
 # Local dev compose override
 docker-compose.override.yml
+
+# node
+node_modules
+
+# macOS nonsense
+.DS_Store

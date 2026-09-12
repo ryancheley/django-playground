@@ -1,14 +1,7 @@
-<ul>
+<ul class="flex items-center justify-center">
     {% for item in navigation_items %}
-      <li{% if request.path == item.uri_path %} class="active"{% endif %}>
-        <a href="{{ item.uri_path }}">{{ item.title }}</a>
+      <li class="mr-6">
+        <a href="{{ item.uri_path }}" {% if request.path == item.uri_path %} class="active" {% else %} class="text-blue-500 hover:text-blue-800" {% endif %}>{{ item.title }}</a>
       </li>
     {% endfor %}
-    <li>
-        {% if request.user %}
-            <p>logged in </p>
-        {% else %}
-            <p>not logged in </p>
-        {% endif %}
-    </li>
 </ul>
