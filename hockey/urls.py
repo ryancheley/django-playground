@@ -1,7 +1,16 @@
 from django.urls import path
 from neapolitan.views import Role
 
-from hockey.views import ConferenceView, DivisionView, SeasonView, TeamSeasonView, TeamView, get_data, load_data
+from hockey.views import (
+    ConferenceView,
+    DivisionView,
+    SeasonFilterView,
+    SeasonView,
+    TeamSeasonView,
+    TeamView,
+    get_data,
+    load_data,
+)
 
 urlpatterns = [
     path("", load_data, name="load-data"),
@@ -11,4 +20,5 @@ urlpatterns = [
     *TeamSeasonView.get_urls(roles={Role.LIST, Role.DETAIL}),
     *ConferenceView.get_urls(roles={Role.LIST, Role.DETAIL}),
     *DivisionView.get_urls(roles={Role.LIST, Role.DETAIL}),
+    path("season-filter/", SeasonFilterView.as_view(), name="season-filter"),
 ]

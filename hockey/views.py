@@ -3,8 +3,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_POST
+from django.views.generic import FormView
 from neapolitan.views import CRUDView
 
+from .forms import SeasonForm
 from .models import Conference, Division, Season, Team, TeamSeason
 from .tasks import set_active_teams, sync_conferences, sync_divisions, sync_seasons, sync_team_season, sync_teams
 
@@ -61,3 +63,9 @@ class DivisionView(LoginRequiredMixin, CRUDView):
 class TeamSeasonView(LoginRequiredMixin, CRUDView):
     model = TeamSeason
     fields = ["division", "team", "season"]
+
+
+class SeasonFilterView(FormView):
+    template_name = "hockey/season_filter.html"
+    form_class = SeasonForm
+    success_url = "/"
