@@ -37,15 +37,22 @@ class ActiveNavigationManager(models.Manager):
         return super().get_queryset().filter(active=True).order_by("navigation_order")
 
 
+class ActiveUnauthenticatedManager(ActiveNavigationManager):
+    def get_queryset(self):
+        return super().get_queryset().filter(authenticated_user_required=False)
+
+
 class Navigation(Base):
     title = models.CharField(max_length=100, unique=True)
     uri_path = models.CharField(max_length=255)
     active = models.BooleanField(null=True)
     navigation_order = models.IntegerField(null=True)
+    authenticated_user_required = models.BooleanField(default=False)
 
     # The order below is important per [Default Managers](https://docs.djangoproject.com/en/6.1/topics/db/managers/#default-managers)
     objects = models.Manager()
     active_objects = ActiveNavigationManager()
+    active_unauthenticated_objects = ActiveUnauthenticatedManager()
 
     def __str__(self):
         return str(self.title)
