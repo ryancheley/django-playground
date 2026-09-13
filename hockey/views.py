@@ -69,3 +69,27 @@ class SeasonFilterView(FormView):
     template_name = "hockey/season_filter.html"
     form_class = SeasonForm
     success_url = "/"
+    extra_context = {
+        "title": "Season Search",
+    }
+
+    def form_valid(self, form):
+        career, playoff = 0, 0
+        season_filter = form.cleaned_data.get("season_type")
+        print(season_filter)
+        if season_filter == "R":
+            career, playoff = 1, 0
+        elif season_filter == "P":
+            career, playoff = 1, 1
+        return self.render_to_response(
+            self.get_context_data(
+                form=form,
+                products=season_filter,
+                seasons=Season.objects.filter(career=career, playoff=playoff).order_by("season_id"),
+            )
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # print(self.form_class.base_fields['season_type'].choices)
+        return context
