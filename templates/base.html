@@ -26,6 +26,12 @@
         <p class="title m-6 text-gray-700">We have {{ stupid }} posts!</p>
         {% block content %}
         {% endblock content %}
+        {% if user.is_authenticated %}
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6" type="submit">Log Out</button>
+          </form>
+          {% endif %}
       </main>
       <footer>
 
@@ -36,17 +42,6 @@
       document.body.addEventListener('htmx:configRequest', (event) => {
         event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
       })
-    </script>
-    <script nonce="{{ request.csp_nonce }}">
-      const burger = document.querySelector("#burger");
-      const menu = document.querySelector("#menu");
-
-      if (burger && menu) {
-        burger.addEventListener('click', () => {
-          const isHidden = menu.classList.toggle('hidden');
-          burger.setAttribute('aria-expanded', String(!isHidden));
-        });
-      }
     </script>
   </body>
 </html>

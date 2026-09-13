@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "health_check",
     "neapolitan",
     # Local
+    "accounts",
     "blog",
     "core",
     "hockey",
@@ -193,3 +194,10 @@ CKEDITOR_5_CONFIGS = {
 
 
 TASKS = {"default": {"BACKEND": "django_tasks_db.DatabaseBackend", "QUEUES": ["default"]}}
+
+
+LOGIN_REDIRECT_URL = "home"
+
+LOGOUT_REDIRECT_URL = "home"
+
+LOGIN_URL = "login"

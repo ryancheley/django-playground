@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<h1 class="sm:flex-auto text-base font-semibold leading-6 text-gray-900">{{ title }}</h1>
+<div class="flex-auto">
+
+    <div class="form">
+      <form class="register-form" method="POST" action="">
+        {% csrf_token %}
+        <h2 class="register-title">Register</h2>
+        <h3>{{form.username.label}}</h3>
+        <p>{{form.username}}</p>
+        <h3>{{form.password.label}}</h3>
+        <p >{{form.password}}</p>
+        <br/>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6">Create</button>
+        <p class="message">Already registered? <a href=#>Log In</a></p>
+        </form>
+        {{ form.errors }}
+      <button type="submit">Log In</button>
+    </div>
+  </div>
+{% endblock %}
