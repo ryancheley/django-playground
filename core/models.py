@@ -34,13 +34,14 @@ class UserProfile(Base):
 
 class ActiveNavigationManager(models.Manager):
     def get_queryset(self):
-        return super().get_queryset().filter(active=True)
+        return super().get_queryset().filter(active=True).order_by("navigation_order")
 
 
 class Navigation(Base):
     title = models.CharField(max_length=100, unique=True)
     uri_path = models.CharField(max_length=255)
     active = models.BooleanField(null=True)
+    navigation_order = models.IntegerField(null=True)
 
     # The order below is important per [Default Managers](https://docs.djangoproject.com/en/6.1/topics/db/managers/#default-managers)
     objects = models.Manager()
