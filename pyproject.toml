@@ -29,6 +29,7 @@ dev = [
     "django-debug-toolbar>=8.0.0",
     "django-probe>=0.3.2",
     "django-upgrade>=1.32.0",
+    "import-linter>=2.15",
     "prek>=0.5.2",
     "pytest-cov>=7.1.0",
     "pytest-django>=4.14.0",
@@ -117,3 +118,23 @@ docstring-code-format = false
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
+
+
+[tool.importlinter]
+root_packages = [
+    "accounts",
+    "blog",
+    "cbv",
+    "core",
+    "hockey",
+]
+
+[[tool.importlinter.contracts]]
+name = "Layered Architecture Contract"
+type = "layers"
+layers = [
+    "blog | cbv ",
+    "hockey",
+    "accounts",
+    "core",
+]

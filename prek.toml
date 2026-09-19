@@ -34,3 +34,14 @@ rev = "1.32.0"
 hooks = [
     { id = "django-upgrade", args = ["--target-version", "6.1"] },
 ]
+
+[[repos]]
+repo = "local"
+
+[[repos.hooks]]
+id = "lint_imports"
+name = "Lint imports"
+entry = "lint-imports"
+language = "system"
+pass_filenames = false
+types = ["python"]

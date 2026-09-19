@@ -90,7 +90,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "core.context_processors.stupid_context",
+                "blog.context_processors.stupid_context",
             ],
             "string_if_invalid": "INVALID_VARIABLE",
         },
