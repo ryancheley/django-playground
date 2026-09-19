@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "django.contrib.flatpages",
     # Third Party
+    "django_absurd",
     "django_ckeditor_5",
     "django_tasks_db",
     "health_check",
