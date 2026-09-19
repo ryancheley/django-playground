@@ -17,6 +17,7 @@ urlpatterns = [
     path("blog/", include("blog.urls")),
     path("hockey/", include("hockey.urls")),
     *UserProfileView.get_urls(),
+    path("cbv/", include("cbv.urls")),
 ]
 
 if DEBUG_TOOLBAR:

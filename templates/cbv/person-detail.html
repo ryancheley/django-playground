@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{ title }} </h1>
+
+💩
+
+<ul>
+    <li><a class = "text-blue-500 hover:text-blue-800" href="{% url 'person-update-view' object.pk %}">Edit</a></li>
+    <li><a class = "text-blue-500 hover:text-blue-800" href="{% url 'person-delete-view' object.pk %}">Delete</a></li>
+    <li><a class = "text-blue-500 hover:text-blue-800" href="{% url 'person-list-view' %}">Full List</a></li>
+</ul>
+{% endblock %}

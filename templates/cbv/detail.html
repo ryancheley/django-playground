@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{ title }} </h1>
+{{ object.season.season_name }}
+<br/>
+{{ object.season.start_date }} - {{ object.season.end_date }}
+<br/>
+{{ object.team.name }} of the {{ object.division }}
+{% endblock %}

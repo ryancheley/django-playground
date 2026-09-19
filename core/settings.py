@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # Local
     "accounts",
     "blog",
+    "cbv",
     "core",
     "hockey",
 ]
@@ -209,3 +210,14 @@ LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
 LOGIN_URL = "login"
+
+
+# Email Stuff
+
+DEFAULT_FROM_EMAIL = "ryan@example.com"
+NOTIFY_EMAIL = "ryan@example.com"
+MAILERS = {
+    "default": {
+        "BACKEND": "django.core.mail.backends.console.EmailBackend",
+    }
+}

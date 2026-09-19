@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> {{ title }} </h1>
+
+<ul>
+{% for item in object_list %}
+    <li><a href="{% url 'detail-view' item.pk %}">{{ item }}</a></li>
+{% endfor %}
+</ul>
+<div>
+    <a href="?page=1"> << </a>
+
+    {% if page_obj.previous_page_number > 0 %}
+        <a href="?page={{ page_obj.previous_page_number }}"> < </a>
+    {% else %}
+        <a href="?page=1"> < </a>
+    {% endif %}
+
+    ({{ page_obj.number }})
+
+    {% if page_obj.next_page_number < page_obj.paginator.num_pages %}
+        <a href="?page={{ page_obj.next_page_number }}"> > </a>
+    {% else %}
+        <a href="?page={{ page_obj.paginator.num_pages }}"> > </a>
+    {% endif %}
+
+    <a href="?page={{ page_obj.paginator.num_pages }}"> >> </a>
+</div>
+{% endblock %}

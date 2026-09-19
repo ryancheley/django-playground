@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="sm:flex-auto text-base font-semibold leading-6 text-gray-900">{{ title }}</h1>
+
+<form method="post" action="{% url 'contact-form' %}">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6">Send Message</button>
+</form>
+
+
+{% endblock %}
