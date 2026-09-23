@@ -1,5 +1,7 @@
 from django import forms
 
+from cbv.models import Person
+
 _INPUT = "mt-1 w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
 
 
@@ -10,3 +12,7 @@ class ContactForm(forms.Form):
     date_need_response = forms.DateField(
         widget=forms.DateInput(attrs={"class": _INPUT, "type": "date"}, format="%Y-%m-%d")
     )
+
+
+class PersonForm(forms.ModelForm):
+    model = Person

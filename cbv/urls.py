@@ -11,6 +11,7 @@ from .views import (
     MyPersonUpdateView,
     MyRedirectView,
     MyTemplateView,
+    PersonFormSet,
 )
 
 urlpatterns = [
@@ -24,4 +25,5 @@ urlpatterns = [
     path("person-view/<int:pk>", MyPersonDetailView.as_view(), name="person-view"),
     path("person-update-view/<int:pk>", MyPersonUpdateView.as_view(), name="person-update-view"),
     path("person-delete-view/<int:pk>", MyPersonDeleteView.as_view(), name="person-delete-view"),
+    path("person-formset", PersonFormSet.as_view(), name="person-formset"),
 ]

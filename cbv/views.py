@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
+from django.forms import modelformset_factory
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -15,8 +16,20 @@ from django.views.generic import (
 
 from hockey.models import TeamSeason
 
-from .forms import ContactForm
+from .forms import ContactForm, PersonForm
 from .models import Person
+
+PersonModelFormset = modelformset_factory(
+    Person,
+    form=PersonForm,
+    extra=1,
+    can_delete=True,
+    fields=(
+        "given_name",
+        "surname",
+        "date_of_birth",
+    ),
+)
 
 
 class MyTemplateView(TemplateView):
@@ -123,4 +136,17 @@ class MyContactForm(FormView):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.NOTIFY_EMAIL],
         )
+        return super().form_valid(form)
+
+
+class PersonFormSet(FormView):
+    form_class = PersonModelFormset
+    extra_context = {
+        "title": "Person Form Set",
+    }
+    template_name = "cbv/person-formset.html"
+    success_url = reverse_lazy("home")
+
+    def form_valid(self, form):
+        form.save()
         return super().form_valid(form)
