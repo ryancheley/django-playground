@@ -36,6 +36,13 @@ hooks = [
 ]
 
 [[repos]]
+repo = "https://github.com/PyCQA/bandit"
+rev = "1.9.4"
+hooks = [
+    { id = "bandit", args = ["-c", "pyproject.toml", " -r", "."] },
+]
+
+[[repos]]
 repo = "local"
 
 [[repos.hooks]]
