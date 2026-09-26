@@ -17,6 +17,7 @@ dependencies = [
     "django-ckeditor-5>=0.2.20",
     "django-environ>=0.14.0",
     "django-health-check>=4.5.1",
+    "django-mcpz>=1.0.4",
     "django-tasks-db>=0.13.0",
     "gunicorn>=26.2.0",
     "httpx2>=2.12.0",

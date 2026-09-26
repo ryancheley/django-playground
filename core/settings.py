@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Third Party
     "django_absurd",
     "django_ckeditor_5",
+    "django_mcpz",
     "django_tasks_db",
     "health_check",
     "neapolitan",
