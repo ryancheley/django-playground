@@ -10,7 +10,7 @@ name = "django-playground"
 version = "0.1.0"
 description = "A place for me to try various things with a Django Site"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.15"
 dependencies = [
     "bandit>=1.9.4",
     "django>=6.1.1",
@@ -80,8 +80,8 @@ exclude = [
 line-length = 120
 indent-width = 4
 
-# Assume Python 3.14
-target-version = "py314"
+# Assume Python 3.15
+target-version = "py315"
 
 [tool.ruff.lint]
 # select = [...]  # See the Default Rules page for the full listing.

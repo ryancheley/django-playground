@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for Django application
 # Stage 1: Builder - compile dependencies
-FROM python:3.14-slim AS builder
+FROM python:3.15-slim AS builder
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
@@ -40,7 +40,7 @@ RUN if [ "$INSTALL_DEV" = "true" ]; then \
     fi
 
 # Stage 2: Runtime - minimal production image
-FROM python:3.14-slim
+FROM python:3.15-slim
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1 \
