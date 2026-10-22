@@ -223,3 +223,9 @@ MAILERS = {
         "BACKEND": "django.core.mail.backends.console.EmailBackend",
     }
 }
+
+
+# TypeSafe settings, for the Jev-backed review commands in grid/ai.py.
+# Empty by default so the app starts without it. The commands that need it
+# say so when they are run.
+TYPESAFE_API_KEY = env("TYPESAFE_API_KEY", default="")

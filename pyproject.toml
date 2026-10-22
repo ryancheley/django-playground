@@ -24,6 +24,7 @@ dependencies = [
     "httpx2>=2.12.0",
     "neapolitan>=26.1",
     "psycopg[binary,pool]>=3.3.5",
+    "pydantic-ai-slim[typesafe]>=2.54.0",
     "whitenoise>=6.8.0",
 ]
 
