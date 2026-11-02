@@ -6,18 +6,17 @@ on:
     - cron: "17 4 1 * *"
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   django-probe:
-    uses: tim-schilling/django-probe/.github/workflows/django-probe-submit-uv.yml@0.4.1
+    uses: tim-schilling/django-probe/.github/workflows/django-probe-submit-uv.yml@0.5.0
     with:
       # Path to the Django project to scan, relative to the repository root.
       path: "."
       # Environment to gate the submit job behind. Empty submits without an approval gate.
       environment: ""
-      # Space-separated uv dependency groups to sync before scanning.
-      dependency-groups: ""
       # Python version for uv to set up. Empty lets uv resolve its own.
       python-version: ""
     secrets:
