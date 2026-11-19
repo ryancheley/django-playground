@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "deny": ["Bash", "Edit", "Write", "Read", "WebFetch"]
+  },
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Claude Code is disabled for this repository.' >&2; exit 2"
+          }
+        ]
+      }
+    ]
+  }
+}
